@@ -13,12 +13,9 @@ export default function Header() {
                     <h1 className="text-3xl font-semibold">Crypto.<span className="text-xl font-bold">io</span></h1>
                 </div>
 
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4">   
                     <Button element="/login">Log In</Button>
                     <Button element="/signup">Sign Up</Button>
-                </div>
-                <div>
-                    <Switch className="bg-main" />
                 </div>
             </div>
         </header>

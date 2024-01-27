@@ -18,7 +18,7 @@ export default function Header() {
                     <Button element="/signup">Sign Up</Button>
                 </div>
                 <div>
-                    <Switch className="bg-main" />
+                    <Switch />
                 </div>
             </div>
         </header>
