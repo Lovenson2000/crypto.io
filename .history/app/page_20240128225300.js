@@ -7,7 +7,7 @@ export default function Home() {
   const currentYear = new Date().getFullYear();
   return (
     <>
-      <section className='pt-8 pb-4 px-3 md:h- md:px-8 md:py-10'>
+      <section className='pt-8 pb-4 px-3 md:px-8 md:py-10'>
         <div className='flex flex-col md:flex-row items-center justify-center gap-8'>
           <div className='flex flex-col justify-center gap-6'>
             <h1 className='font-semibold text-slate-700 text-4xl'>Real-time <span className="text-third">Insights</span> About Any Cryptocurrency</h1>
