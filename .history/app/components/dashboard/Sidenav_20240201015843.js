@@ -14,6 +14,10 @@ export default function SideNav() {
             <Logo />
           </div>
         </Link>
+        <Link href="/dashboard">Overview</Link>
+        <Link href="/dashboard">Overview</Link>
+        <Link href="/dashboard">Overview</Link>
+        <Link href="/dashboard">Overview</Link>
       </div>
       <SignOutButton />
     </div>

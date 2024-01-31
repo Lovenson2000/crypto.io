@@ -5,7 +5,7 @@ import SideNav from '../components/dashboard/Sidenav';
 
 export default function Layout({ children }) {
     return (
-        <div className="flex h-screen bg-blue-950">
+        <div className="flex h-screen p-4 bg-blue-950">
             <div className="w-full flex-none md:w-64">
                 <SideNav />
             </div>
