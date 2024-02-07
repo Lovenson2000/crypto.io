@@ -13,8 +13,8 @@ export default function Home() {
       <main className='flex flex-col md:flex-row items-center justify-center gap-8 pt-8 h-full pb-4 px-3 md:px-8 md:py-10'>
 
         <div className='flex flex-col items-center justify-center gap-6'>
-          <h1 className='font-semibold text-slate-700 dark:text-slate-200 text-3xl md:text-4xl'>Real-time <span className="text-third">Insights</span> About Any Cryptocurrency</h1>
-          <p className='text-md dark:text-slate-200'>
+          <h1 className='font-semibold text-slate-700 dark:text-slate-200 text-4xl'>Real-time <span className="text-third">Insights</span> About Any Cryptocurrency</h1>
+          <p className='text-lg dark:text-slate-200'>
             Get real-time information about the trending Cryptocurrencies and make data-based decisions.
           </p>
           <Link
@@ -24,22 +24,13 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="dark:hidden">
+        <div>
           <Image
             src='/assets/graph.avif'
             width={700}
             height={500}
             alt='hero-image'
-            className="object-contain w-min-80 object-center dark:mix-blend-soft-light mix-blend-darken"
-          />
-        </div>
-        <div className="hidden dark:flex">
-          <Image
-            src='/assets/graph-removebg.jpg'
-            width={700}
-            height={500}
-            alt='hero-image'
-            className="object-contain w-min-80 object-center dark:mix-blend-normal mix-blend-darken"
+            className="object-contain w-min-80 object-center dark:mix-blend-multiply mix-blend-darken"
           />
         </div>
       </main>
