@@ -1,5 +1,4 @@
 import { fetchCoins } from '@/app/api/data';
-import { roundToDecimals } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IoMdArrowDropup } from "react-icons/io";
@@ -7,7 +6,7 @@ import SingleLineChart from '../MyLine';
 
 export default async function CoinsTable() {
     const response = await fetchCoins();
-    const coins = response.slice(0, 7);
+    const coins = response.slice(0, 8);
     // console.log(coins);
 
     return (
@@ -44,7 +43,7 @@ export default async function CoinsTable() {
                 {coins?.map((coin) => (
                     <tr
                         key={coin.id}
-                        className="w-full border-b dark:border-slate-900 py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                        className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                     >
                         <td className="whitespace-nowrap px-3 py-3">
                             {coin.market_cap_rank}

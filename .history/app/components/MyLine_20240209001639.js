@@ -1,7 +1,7 @@
 "use client";
 import { pickAndroundPrices } from "@/lib/utils";
 import React from "react";
-import { Sparklines, SparklinesCurve } from "react-sparklines";
+import { Sparklines, SparklinesCurve, SparklinesLine } from "react-sparklines";
 
 export default function SingleLineChart({coin}) {
   const prices = pickAndroundPrices(coin.sparkline_in_7d.price, 24);

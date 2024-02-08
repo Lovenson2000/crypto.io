@@ -7,7 +7,7 @@ import SingleLineChart from '../MyLine';
 
 export default async function CoinsTable() {
     const response = await fetchCoins();
-    const coins = response.slice(0, 7);
+    const coins = response.slice(0, 6);
     // console.log(coins);
 
     return (

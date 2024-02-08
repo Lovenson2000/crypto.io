@@ -5,7 +5,7 @@ import SearchAndFilter from "../components/dashboard/SearchAndFilter";
 export default function Page() {
 
   return (
-    <div className='dark:bg-slate-900 flex flex-col'>
+    <div className='dark:bg-slate-900 flex '>
       <ChartWrapper />
       <SearchAndFilter />
       <CoinsTable />

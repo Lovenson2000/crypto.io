@@ -1,5 +1,5 @@
 import {fetchFirstFourCoins } from '@/app/api/data';
-import { roundToDecimals } from '@/lib/utils';
+import { roundToDecimals } from '@/app/lib/utils';
 import Image from 'next/image'
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { FaArrowTrendDown } from "react-icons/fa6";
