@@ -43,6 +43,7 @@ function SearchBox({ handleSearch }) {
         debouncedSearch(query);
     };
 
+
     return (
         <div className="flex w-full max-w-sm items-center gap-4">
             <Input

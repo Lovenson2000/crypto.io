@@ -33,15 +33,7 @@ export default function SearchAndFilter({ handleSearch, handleFilter }) {
 function SearchBox({ handleSearch }) {
     const [searchQuery, setSearchQuery] = useState();
 
-    const debouncedSearch = _.debounce((query) => {
-        handleSearch(query); // manipulating the input while the user is typing
-    }, 300);
-
-    const handleChange = (e) => {
-        const query = e.target.value;
-        setSearchQuery(query);
-        debouncedSearch(query);
-    };
+    const debounceSearch = _.debounce()
 
     return (
         <div className="flex w-full max-w-sm items-center gap-4">
@@ -49,7 +41,7 @@ function SearchBox({ handleSearch }) {
                 value={searchQuery}
                 type="text"
                 placeholder="search coin"
-                onChange={handleChange}
+                onChange={(e) => setSearchQuery(e.target.value)}
             />
             <Button
                 type="submit"

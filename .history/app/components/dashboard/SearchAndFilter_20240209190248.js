@@ -34,14 +34,14 @@ function SearchBox({ handleSearch }) {
     const [searchQuery, setSearchQuery] = useState();
 
     const debouncedSearch = _.debounce((query) => {
-        handleSearch(query); // manipulating the input while the user is typing
+        handleSearch(query);
     }, 300);
-
     const handleChange = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
         debouncedSearch(query);
     };
+
 
     return (
         <div className="flex w-full max-w-sm items-center gap-4">
@@ -49,7 +49,7 @@ function SearchBox({ handleSearch }) {
                 value={searchQuery}
                 type="text"
                 placeholder="search coin"
-                onChange={handleChange}
+                onChange={(e) => setSearchQuery(e.target.value)}
             />
             <Button
                 type="submit"
