@@ -51,18 +51,10 @@ function SearchBox({ handleSearch }) {
 }
 
 function FilterBox({ handleFilter }) {
-
-    const [selectedValue, setSelectedValue] = useState('');
-
-    const handleValueChange = (value) => {
-        setSelectedValue(value);
-        handleFilter(value);
-    };
-
     return (
         <Select
-            value={selectedValue}
-            onValueChange={handleValueChange}
+            value=""
+            onValueChange={(e) => handleFilter(e.target.value)}
         >
 
             <SelectTrigger className="w-[180px]">

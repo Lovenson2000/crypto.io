@@ -1,5 +1,6 @@
 "use client";
 
+import { fetchCoins } from '@/app/api/data';
 import { roundToDecimals } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,48 +9,36 @@ import { IoMdArrowDropup } from "react-icons/io";
 import SingleLineChart from '../MyLine';
 import SearchAndFilter from './SearchAndFilter';
 
-export default function CoinsTable({ coins }) {
+export default async function CoinsTable() {
 
-    const [allCoins, setAllCoins] = useState(coins);
-    const [filteredCoins, setFilteredCoins] = useState(coins);
-
-    const handleSearch = (query) => {
-        let results = allCoins;
-
-        if (query) {
-            results = results.filter((coin) =>
-                coin.name.toLowerCase().includes(query.toLowerCase())
-            );
-        }
-
-        setFilteredCoins(results);
-    };
-
-    const handleFilter = (parameter) => {
-        let results = [...filteredCoins];
-
-        if (parameter) {
-            results = results
-                .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null);
-                
-            if (parameter === 'market_cap_rank') {
-                results.sort((a, b) => a[parameter] - b[parameter]);
-            } else {
-                results.sort((a, b) => b[parameter] - a[parameter]);
-            }
-        }
-
-        setFilteredCoins(results);
-    };
+    const [allCoins, setAllCoins] = useState([]);
+    const [filteredCoins, setFilteredCoins] = useState([]);
 
     useEffect(() => {
-        setAllCoins(coins);
-    }, [coins]);
+        const fetchData = async () => {
+            const response = await fetchCoins();
+            setAllCoins(response.slice(0, 6));
+        };
+
+        fetchData();
+    }, []);
+
+    // Function to handle search and update filtered coins
+    const handleSearch = (query) => {
+        if (query) {
+            const filteredResults = allCoins.filter((coin) =>
+                coin.name.toLowerCase().includes(query.toLowerCase())
+            );
+            setFilteredCoins(filteredResults);
+        } else {
+            setFilteredCoins(allCoins);
+        }
+    };
 
     return (
 
         <>
-            <SearchAndFilter handleSearch={handleSearch} handleFilter={handleFilter} />
+            <SearchAndFilter onSearch={handleSearch} />
             <table className='w-full dark:bg-slate-900'>
                 <thead className="rounded-lg text-left text-sm font-normal">
                     <tr>
@@ -80,7 +69,7 @@ export default function CoinsTable({ coins }) {
                     </tr>
                 </thead>
                 <tbody className='bg-white dark:bg-slate-800'>
-                    {filteredCoins?.map((coin) => (
+                    {coins?.map((coin) => (
                         <tr
                             key={coin.id}
                             className="w-full border-b dark:border-slate-900 py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"

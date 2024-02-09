@@ -26,12 +26,11 @@ export default function CoinsTable({ coins }) {
     };
 
     const handleFilter = (parameter) => {
-        let results = [...filteredCoins];
+        let results = [...allCoins];
 
         if (parameter) {
             results = results
-                .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null);
-                
+                .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null)
             if (parameter === 'market_cap_rank') {
                 results.sort((a, b) => a[parameter] - b[parameter]);
             } else {
@@ -44,7 +43,9 @@ export default function CoinsTable({ coins }) {
 
     useEffect(() => {
         setAllCoins(coins);
+        // handleFilter();
     }, [coins]);
+
 
     return (
 

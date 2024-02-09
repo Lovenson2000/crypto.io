@@ -25,31 +25,29 @@ export default function CoinsTable({ coins }) {
         setFilteredCoins(results);
     };
 
-    const handleFilter = (parameter) => {
-        let results = [...filteredCoins];
+    // const handleFilter = (parameter) => {
+    //     let results = [...allCoins];
+    
+    //     if (parameter) {
+    //         results = results
+    //             .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null);
+    //     }
+    
+    //     setFilteredCoins(results);
+    // };
+    
 
-        if (parameter) {
-            results = results
-                .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null);
-                
-            if (parameter === 'market_cap_rank') {
-                results.sort((a, b) => a[parameter] - b[parameter]);
-            } else {
-                results.sort((a, b) => b[parameter] - a[parameter]);
-            }
-        }
-
-        setFilteredCoins(results);
-    };
 
     useEffect(() => {
         setAllCoins(coins);
+        // handleFilter();
     }, [coins]);
+    
 
     return (
 
         <>
-            <SearchAndFilter handleSearch={handleSearch} handleFilter={handleFilter} />
+            <SearchAndFilter handleSearch={handleSearch} />
             <table className='w-full dark:bg-slate-900'>
                 <thead className="rounded-lg text-left text-sm font-normal">
                     <tr>

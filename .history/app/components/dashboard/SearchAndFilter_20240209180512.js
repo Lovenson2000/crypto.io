@@ -52,36 +52,22 @@ function SearchBox({ handleSearch }) {
 
 function FilterBox({ handleFilter }) {
 
-    const [selectedValue, setSelectedValue] = useState('');
-
-    const handleValueChange = (value) => {
-        setSelectedValue(value);
-        handleFilter(value);
-    };
-
     return (
-        <Select
-            value={selectedValue}
-            onValueChange={handleValueChange}
-        >
-
+        <Select>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Filter by" />
             </SelectTrigger>
-            <SelectContent>
-                <SelectGroup>
-                    <SelectLabel>Parameters</SelectLabel>
-                    {filterOptions.map((option) => (
-                        <SelectItem
+            {filterOptions.map((option) => (
+                        <select
                             value={option.value}
                             key={option.name}
+                            onChange={() => handleFilter(option.value)}
                         >
                             {option.name}
-                        </SelectItem>
+                        </select>
                     ))}
-                </SelectGroup>
-            </SelectContent>
+           
         </Select>
     );
-}
 
+}

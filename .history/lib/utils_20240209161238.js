@@ -17,9 +17,11 @@ export const roundToDecimals = (number, degree) => {
   return parseFloat(number.toFixed(degree))
 }
 
-// export const filterCoins = (coins, parameter) => {
-//   return coins
-//     .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null);
-// };
+export const filterCoins = (coins, parameter) => {
+  
+  return coins.filter((coin) => {
+    coin.sort((a, b) => b.coin.parameter > a.coin.parameter)
+  })
 
 
+}

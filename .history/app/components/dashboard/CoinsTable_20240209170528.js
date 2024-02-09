@@ -1,6 +1,6 @@
 "use client";
 
-import { roundToDecimals } from '@/lib/utils';
+import { filterCoins, roundToDecimals } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -26,24 +26,19 @@ export default function CoinsTable({ coins }) {
     };
 
     const handleFilter = (parameter) => {
-        let results = [...filteredCoins];
+        let results = [...allCoins];
 
         if (parameter) {
-            results = results
-                .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null);
-                
-            if (parameter === 'market_cap_rank') {
-                results.sort((a, b) => a[parameter] - b[parameter]);
-            } else {
-                results.sort((a, b) => b[parameter] - a[parameter]);
-            }
+            results = filterCoins(results, parameter);
         }
 
         setFilteredCoins(results);
     };
 
+
     useEffect(() => {
         setAllCoins(coins);
+        handleFilter();
     }, [coins]);
 
     return (

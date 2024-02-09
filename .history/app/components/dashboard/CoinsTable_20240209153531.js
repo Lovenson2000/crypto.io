@@ -1,5 +1,6 @@
 "use client";
 
+import { fetchCoins } from '@/app/api/data';
 import { roundToDecimals } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,48 +9,36 @@ import { IoMdArrowDropup } from "react-icons/io";
 import SingleLineChart from '../MyLine';
 import SearchAndFilter from './SearchAndFilter';
 
-export default function CoinsTable({ coins }) {
+export default function CoinsTable({coins}) {
 
     const [allCoins, setAllCoins] = useState(coins);
-    const [filteredCoins, setFilteredCoins] = useState(coins);
-
-    const handleSearch = (query) => {
-        let results = allCoins;
-
-        if (query) {
-            results = results.filter((coin) =>
-                coin.name.toLowerCase().includes(query.toLowerCase())
-            );
-        }
-
-        setFilteredCoins(results);
-    };
-
-    const handleFilter = (parameter) => {
-        let results = [...filteredCoins];
-
-        if (parameter) {
-            results = results
-                .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null);
-                
-            if (parameter === 'market_cap_rank') {
-                results.sort((a, b) => a[parameter] - b[parameter]);
-            } else {
-                results.sort((a, b) => b[parameter] - a[parameter]);
-            }
-        }
-
-        setFilteredCoins(results);
-    };
+    const [filteredCoins, setFilteredCoins] = useState([]);
 
     useEffect(() => {
-        setAllCoins(coins);
-    }, [coins]);
+        const fetchData = async () => {
+            const response = await fetchCoins();
+            setAllCoins(response.slice(0, 6));
+        };
+
+        fetchData();
+    }, []);
+
+    // Function to handle search and update filtered coins
+    const handleSearch = (query) => {
+        if (query) {
+            const filteredResults = allCoins.filter((coin) =>
+                coin.name.toLowerCase().includes(query.toLowerCase())
+            );
+            setFilteredCoins(filteredResults);
+        } else {
+            setFilteredCoins(allCoins);
+        }
+    };
 
     return (
 
         <>
-            <SearchAndFilter handleSearch={handleSearch} handleFilter={handleFilter} />
+            <SearchAndFilter handleSearch={handleSearch} />
             <table className='w-full dark:bg-slate-900'>
                 <thead className="rounded-lg text-left text-sm font-normal">
                     <tr>

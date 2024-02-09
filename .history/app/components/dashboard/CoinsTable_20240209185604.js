@@ -30,8 +30,7 @@ export default function CoinsTable({ coins }) {
 
         if (parameter) {
             results = results
-                .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null);
-                
+                .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null)
             if (parameter === 'market_cap_rank') {
                 results.sort((a, b) => a[parameter] - b[parameter]);
             } else {

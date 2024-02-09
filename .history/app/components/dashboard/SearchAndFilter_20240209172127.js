@@ -31,6 +31,16 @@ export default function SearchAndFilter({ handleSearch, handleFilter }) {
 
 function SearchBox({ handleSearch }) {
     const [searchQuery, setSearchQuery] = useState();
+    const handleFilter = (parameter) => {
+    let results = [...allCoins];
+
+    if (parameter) {
+        results = filterCoins(results, parameter);
+        console.log(parameter);
+    }
+
+    setFilteredCoins(results);
+};
 
     return (
         <div className="flex w-full max-w-sm items-center gap-4">
@@ -50,31 +60,22 @@ function SearchBox({ handleSearch }) {
     );
 }
 
-function FilterBox({ handleFilter }) {
-
-    const [selectedValue, setSelectedValue] = useState('');
-
-    const handleValueChange = (value) => {
-        setSelectedValue(value);
-        handleFilter(value);
-    };
+function FilterBox({handleFilter}) {
 
     return (
-        <Select
-            value={selectedValue}
-            onValueChange={handleValueChange}
-        >
-
+        <Select>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Filter by" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Parameters</SelectLabel>
+
                     {filterOptions.map((option) => (
-                        <SelectItem
+                        <SelectItem 
                             value={option.value}
                             key={option.name}
+                            onChange={(e) => handleFilter(e.target.value)}
                         >
                             {option.name}
                         </SelectItem>
@@ -83,5 +84,5 @@ function FilterBox({ handleFilter }) {
             </SelectContent>
         </Select>
     );
-}
 
+}

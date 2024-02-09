@@ -12,24 +12,17 @@ import {
 } from "@/components/ui/select"
 import { useState } from 'react';
 
-const filterOptions = [
-    { name: 'Price', value: 'current_price', },
-    { name: 'Market Cap', value: 'market_cap', },
-    { name: 'Market Rank', value: 'market_cap_rank', },
-    { name: 'Last 24H %', value: 'market_cap_change_percentage_24h', },
-];
-
-export default function SearchAndFilter({ handleSearch, handleFilter }) {
+export default function SearchAndFilter({ handleSearch }) {
 
     return (
         <div className="w-full p-1 flex items-center justify-between gap-12">
             <SearchBox handleSearch={handleSearch} />
-            <FilterBox handleFilter={handleFilter} />
+            <FilterBox />
         </div>
-    );
+    )
 }
 
-function SearchBox({ handleSearch }) {
+function SearchBox({handleSearch}) {
     const [searchQuery, setSearchQuery] = useState();
 
     return (
@@ -42,7 +35,7 @@ function SearchBox({ handleSearch }) {
             />
             <Button
                 type="submit"
-                onClick={(e) => handleSearch(searchQuery)}
+                onClick={()=> handleSearch(searchQuery)}
             >
                 Search
             </Button>
@@ -50,38 +43,22 @@ function SearchBox({ handleSearch }) {
     );
 }
 
-function FilterBox({ handleFilter }) {
-
-    const [selectedValue, setSelectedValue] = useState('');
-
-    const handleValueChange = (value) => {
-        setSelectedValue(value);
-        handleFilter(value);
-    };
-
+function FilterBox() {
     return (
-        <Select
-            value={selectedValue}
-            onValueChange={handleValueChange}
-        >
-
+        <Select>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Filter by" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Parameters</SelectLabel>
-                    {filterOptions.map((option) => (
-                        <SelectItem
-                            value={option.value}
-                            key={option.name}
-                        >
-                            {option.name}
-                        </SelectItem>
-                    ))}
+                    <SelectItem value="price">Price</SelectItem>
+                    <SelectItem value="marketCap">Market cap</SelectItem>
+                    <SelectItem value="circulatingSupplies">Circulating supplies</SelectItem>
+                    <SelectItem value="last24H">Last 24H %</SelectItem>
                 </SelectGroup>
             </SelectContent>
         </Select>
     );
-}
 
+}

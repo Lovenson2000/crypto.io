@@ -52,7 +52,7 @@ function SearchBox({ handleSearch }) {
 
 function FilterBox({ handleFilter }) {
 
-    const [selectedValue, setSelectedValue] = useState('');
+    const [selectedValue, setSelectedValue] = useState("market_cap_rank");
 
     const handleValueChange = (value) => {
         setSelectedValue(value);

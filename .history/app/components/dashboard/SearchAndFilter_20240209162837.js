@@ -19,12 +19,12 @@ const filterOptions = [
     { name: 'Last 24H %', value: 'market_cap_change_percentage_24h', },
 ];
 
-export default function SearchAndFilter({ handleSearch, handleFilter }) {
+export default function SearchAndFilter({ handleSearch }) {
 
     return (
         <div className="w-full p-1 flex items-center justify-between gap-12">
             <SearchBox handleSearch={handleSearch} />
-            <FilterBox handleFilter={handleFilter} />
+            <FilterBox />
         </div>
     );
 }
@@ -42,7 +42,7 @@ function SearchBox({ handleSearch }) {
             />
             <Button
                 type="submit"
-                onClick={(e) => handleSearch(searchQuery)}
+                onClick={() => handleSearch(searchQuery)}
             >
                 Search
             </Button>
@@ -50,38 +50,25 @@ function SearchBox({ handleSearch }) {
     );
 }
 
-function FilterBox({ handleFilter }) {
+function FilterBox() {
 
-    const [selectedValue, setSelectedValue] = useState('');
-
-    const handleValueChange = (value) => {
-        setSelectedValue(value);
-        handleFilter(value);
-    };
+    const [filterParameter, setFilterParameter] = useState("");
 
     return (
-        <Select
-            value={selectedValue}
-            onValueChange={handleValueChange}
-        >
-
+        <Select>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Filter by" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Parameters</SelectLabel>
-                    {filterOptions.map((option) => (
-                        <SelectItem
-                            value={option.value}
-                            key={option.name}
-                        >
-                            {option.name}
-                        </SelectItem>
-                    ))}
+                    <SelectItem value="current_price">Price</SelectItem>
+                    <SelectItem value="market_cap">Market Cap</SelectItem>
+                    <SelectItem value="market_cap_rank">Market Rank</SelectItem>
+                    <SelectItem value="market_cap_change_percentage_24h">Last 24H %</SelectItem>
                 </SelectGroup>
             </SelectContent>
         </Select>
     );
-}
 
+}

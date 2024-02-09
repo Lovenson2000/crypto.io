@@ -1,6 +1,6 @@
 "use client";
 
-import { roundToDecimals } from '@/lib/utils';
+import { filterCoins, roundToDecimals } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -12,9 +12,14 @@ export default function CoinsTable({ coins }) {
 
     const [allCoins, setAllCoins] = useState(coins);
     const [filteredCoins, setFilteredCoins] = useState(coins);
+    
 
-    const handleSearch = (query) => {
+    const handleSearch = (query, filterParameter) => {
         let results = allCoins;
+
+        if (filterParameter) {
+            results = filterCoins(results, filterParameter);
+        }
 
         if (query) {
             results = results.filter((coin) =>
@@ -25,31 +30,17 @@ export default function CoinsTable({ coins }) {
         setFilteredCoins(results);
     };
 
-    const handleFilter = (parameter) => {
-        let results = [...filteredCoins];
-
-        if (parameter) {
-            results = results
-                .filter((coin) => coin[parameter] !== undefined && coin[parameter] !== null);
-                
-            if (parameter === 'market_cap_rank') {
-                results.sort((a, b) => a[parameter] - b[parameter]);
-            } else {
-                results.sort((a, b) => b[parameter] - a[parameter]);
-            }
-        }
-
-        setFilteredCoins(results);
-    };
-
     useEffect(() => {
+
         setAllCoins(coins);
-    }, [coins]);
+        setFilteredCoins(coins);
+        handleSearch();
+    }, [coins, filterParameter]);
 
     return (
 
         <>
-            <SearchAndFilter handleSearch={handleSearch} handleFilter={handleFilter} />
+            <SearchAndFilter handleSearch={handleSearch} />
             <table className='w-full dark:bg-slate-900'>
                 <thead className="rounded-lg text-left text-sm font-normal">
                     <tr>

@@ -58,11 +58,11 @@ function FilterBox({ handleFilter }) {
         setSelectedValue(value);
         handleFilter(value);
     };
-
+    
     return (
         <Select
-            value={selectedValue}
-            onValueChange={handleValueChange}
+            value=""
+            onValueChange={(e) => handleFilter(e.target.value)}
         >
 
             <SelectTrigger className="w-[180px]">

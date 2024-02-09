@@ -24,7 +24,7 @@ export default function SearchAndFilter({ handleSearch, handleFilter }) {
     return (
         <div className="w-full p-1 flex items-center justify-between gap-12">
             <SearchBox handleSearch={handleSearch} />
-            <FilterBox handleFilter={handleFilter} />
+            <FilterBox handleFilter={}={handleFilter} />
         </div>
     );
 }
@@ -50,31 +50,22 @@ function SearchBox({ handleSearch }) {
     );
 }
 
-function FilterBox({ handleFilter }) {
-
-    const [selectedValue, setSelectedValue] = useState('');
-
-    const handleValueChange = (value) => {
-        setSelectedValue(value);
-        handleFilter(value);
-    };
+function FilterBox({handleFilter}) {
 
     return (
-        <Select
-            value={selectedValue}
-            onValueChange={handleValueChange}
-        >
-
+        <Select>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Filter by" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
                     <SelectLabel>Parameters</SelectLabel>
+
                     {filterOptions.map((option) => (
-                        <SelectItem
+                        <SelectItem 
                             value={option.value}
                             key={option.name}
+                            onChange={(e) => handleFilter(e.target.value)}
                         >
                             {option.name}
                         </SelectItem>
@@ -83,5 +74,5 @@ function FilterBox({ handleFilter }) {
             </SelectContent>
         </Select>
     );
-}
 
+}

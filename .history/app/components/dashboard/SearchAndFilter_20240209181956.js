@@ -19,12 +19,12 @@ const filterOptions = [
     { name: 'Last 24H %', value: 'market_cap_change_percentage_24h', },
 ];
 
-export default function SearchAndFilter({ handleSearch, handleFilter }) {
+export default function SearchAndFilter({ handleSearch,}) {
 
     return (
         <div className="w-full p-1 flex items-center justify-between gap-12">
             <SearchBox handleSearch={handleSearch} />
-            <FilterBox handleFilter={handleFilter} />
+            <FilterBox />
         </div>
     );
 }
@@ -51,20 +51,13 @@ function SearchBox({ handleSearch }) {
 }
 
 function FilterBox({ handleFilter }) {
-
-    const [selectedValue, setSelectedValue] = useState('');
-
-    const handleValueChange = (value) => {
-        setSelectedValue(value);
-        handleFilter(value);
-    };
+    const [filterParameter, setFilterParameter] = useState();
 
     return (
         <Select
-            value={selectedValue}
-            onValueChange={handleValueChange}
+            value={filterParameter}
+            onChange={(e) => console.log(e.target.value)}
         >
-
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Filter by" />
             </SelectTrigger>
@@ -75,6 +68,7 @@ function FilterBox({ handleFilter }) {
                         <SelectItem
                             value={option.value}
                             key={option.name}
+                            
                         >
                             {option.name}
                         </SelectItem>
@@ -85,3 +79,18 @@ function FilterBox({ handleFilter }) {
     );
 }
 
+
+
+{/* <select
+    value={parameter}
+>
+    {filterOptions.map((option) => (
+        <option
+            value={option.value}
+            key={option.name}
+            onChange={(e) => console.log(e.target.value)}
+        >
+            {option.name}
+        </option>
+    ))}
+</select> */}
