@@ -30,7 +30,7 @@ export default async function ChartWrapper() {
 
 function BoxChart({ coin }) {
     return (
-        <div className="dark:bg-slate-800 dark:text-slate-100 bg-white w-72 md:w-64 p-3 text-slate-700 relative border-b-2 border-main my-4 shadow-lg rounded-sm">
+        <div className="dark:bg-slate-800 dark:text-slate-100 bg-white w-64 p-3 text-slate-700 relative border-b-2 border-main my-4 shadow-lg rounded-sm">
             <Image
                 width={30}
                 height={30}
@@ -53,4 +53,3 @@ function BoxChart({ coin }) {
         </div>
     )
 }
-

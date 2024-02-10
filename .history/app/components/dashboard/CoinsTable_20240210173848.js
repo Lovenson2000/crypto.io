@@ -175,7 +175,7 @@ function CoinsTableMobile({ filteredCoins }) {
                         </th>
                     </div>
 
-                    <div className="flex items-center justify-center gap-4">
+                    <div className="flex items-center justify-btween gap-4">
                         <th scope="col" className="p-2 font-medium">
                             Last 24h
                         </th>
@@ -186,7 +186,7 @@ function CoinsTableMobile({ filteredCoins }) {
                 {filteredCoins?.map((coin) => (
                     <tr
                         key={coin.id}
-                        className="border-b dark:border-slate-900 text-sm last-of-type:border-none rounded-lg"
+                        className="border-b dark:border-slate-900 text-sm last-of-type:border-none rounded-md"
                     >
                         <div className="w-full flex items-center justify-center gap-4">
                             <td className="whitespace-nowrap px-3 py-3">

@@ -148,9 +148,9 @@ function CoinsTableMobile({ filteredCoins }) {
 
     return (
 
-        <table className="w-full flex flex-col items-center md:hidden dark:bg-slate-900">
-            <thead className="w-full my-4 rounded-lg text-left text-sm font-normal">
-                <tr className="flex flex-col items-start justify-between text-[0.8rem]">
+        <table className="w-40 flex flex-col items-center md:hidden dark:bg-slate-900">
+            <thead className="bg-red-500 rounded-lg text-left text-sm font-normal">
+                <tr className="flex flex-col">
                     <div className="flex items-center justify-btween gap-4">
                         <th scope="col" className="p-2 font-medium">
                             #
@@ -175,9 +175,12 @@ function CoinsTableMobile({ filteredCoins }) {
                         </th>
                     </div>
 
-                    <div className="flex items-center justify-center gap-4">
+                    <div className="flex items-center justify-btween gap-4">
                         <th scope="col" className="p-2 font-medium">
                             Last 24h
+                        </th>
+                        <th scope='col' className='p-2'>
+                            Actions
                         </th>
                     </div>
                 </tr>
@@ -186,13 +189,13 @@ function CoinsTableMobile({ filteredCoins }) {
                 {filteredCoins?.map((coin) => (
                     <tr
                         key={coin.id}
-                        className="border-b dark:border-slate-900 text-sm last-of-type:border-none rounded-lg"
+                        className="w-full border-b dark:border-slate-900 py-3 text-sm last-of-type:border-none"
                     >
                         <div className="w-full flex items-center justify-center gap-4">
                             <td className="whitespace-nowrap px-3 py-3">
                                 {coin.market_cap_rank}
                             </td>
-                            <td className="whitespace-nowrap py-3">
+                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
                                 <div className="flex items-center gap-3">
                                     <Image
                                         src={coin.image}
@@ -204,14 +207,14 @@ function CoinsTableMobile({ filteredCoins }) {
                                     <p>{coin.name}</p>
                                 </div>
                             </td>
-                            <td className="whitespace-nowrap">
+                            <td className="whitespace-nowrap px-3 py-3">
                                 ${roundToDecimals(coin.current_price, 2)}
                             </td>
                         </div>
 
-                        <div className="w-full flex items-center justify-center">
-                            <td className="whitespace-nowrap flex items-center">
-                                <span className='text-[0.8rem]'>
+                        <div className="w-full flex gap-4">
+                            <td className="whitespace-nowrap flex items-center px-3 py-3">
+                                <span className='text-2xl'>
                                     {coin.market_cap_change_percentage_24h > 0 ?
                                         <IoMdArrowDropup
                                             className='text-green-500' />
@@ -220,16 +223,19 @@ function CoinsTableMobile({ filteredCoins }) {
                                 </span>
                                 {roundToDecimals(coin.market_cap_change_percentage_24h, 2)}%
                             </td>
-                            <td className="whitespace-nowrap text-[0.8rem]">
+                            <td className="whitespace-nowrap px-3 py-3">
                                 ${coin.market_cap}
                             </td>
-                            <td className="whitespace-nowrap text-[0.8rem] p-1">
+                            <td className="whitespace-nowrap px-3 py-3">
                                 {Math.ceil(coin.circulating_supply)}
                                 <span className='dark:text-slate-300 text-slate-800 mx-1 uppercase'>{coin.symbol}</span>
                             </td>
                         </div>
 
-                        <div className="w-full flex items-center justify-center p-2">
+                        <div className="w-full flex items-center between gap-4">
+                            <td className="whitespace-nowrap px-3 py-3">
+                                <h2>Graph Line...</h2>
+                            </td>
 
                             <td className="whitespace-nowrap px-3 py-3">
                                 <Link

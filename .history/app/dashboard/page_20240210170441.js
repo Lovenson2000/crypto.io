@@ -4,7 +4,7 @@ import { fetchCoins } from "../api/data";
 
 export default async function Page() {
   const response = await fetchCoins();
-  const coins = await response.slice(0, 40);
+  const coins = await response.slice(0, 30);
 
   return (
     <div className='w-full dark:bg-slate-900 flex flex-col'>

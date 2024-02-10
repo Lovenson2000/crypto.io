@@ -50,8 +50,7 @@ export default function CoinsTable({ coins }) {
 
         <>
             <SearchAndFilter handleSearch={handleSearch} handleFilter={handleFilter} />
-            <CoinsTableMobile filteredCoins={filteredCoins} />
-            <table className='hidden w-full dark:bg-slate-900'>
+            <table className='w-full dark:bg-slate-900'>
                 <thead className="rounded-lg text-left text-sm font-normal">
                     <tr>
                         <th scope="col" className="px-3 py-5 font-medium">
@@ -142,57 +141,56 @@ export default function CoinsTable({ coins }) {
     )
 }
 
-
-
 function CoinsTableMobile({ filteredCoins }) {
 
     return (
 
-        <table className="w-full flex flex-col items-center md:hidden dark:bg-slate-900">
-            <thead className="w-full my-4 rounded-lg text-left text-sm font-normal">
-                <tr className="flex flex-col items-start justify-between text-[0.8rem]">
-                    <div className="flex items-center justify-btween gap-4">
-                        <th scope="col" className="p-2 font-medium">
+        <table className="w-full dark:bg-slate-900">
+
+            <thead className="bg-red-500 rounded-lg text-left text-sm font-normal">
+                <tr className="grid grid-cols-3 grid-rows-2 gap-4">
+                    <div className="w-full flex items-center justify-center">
+                        <th scope="col" className="px-3 py-5 font-medium">
                             #
                         </th>
-                        <th scope="col" className="p-2 font-medium">
+                        <th scope="col" className="px-6 py-5 font-medium">
                             Name
                         </th>
-                        <th scope="col" className="p-2 font-medium">
+                        <th scope="col" className="px-3 py-5 font-medium">
                             Price
                         </th>
                     </div>
-
-                    <div className="flex items-center justify-btween gap-4">
-                        <th scope="col" className="p-2 font-medium">
+                    <div>
+                        <th scope="col" className="px-3 py-5 font-medium">
                             24h %
                         </th>
-                        <th scope="col" className="p-2font-medium">
+                        <th scope="col" className="px-3 py-5 font-medium">
                             Market Cap
                         </th>
-                        <th scope="col" className="p-2font-medium">
+                        <th scope="col" className="px-3 py-5 font-medium">
                             Circulating Supply
                         </th>
                     </div>
-
-                    <div className="flex items-center justify-center gap-4">
-                        <th scope="col" className="p-2 font-medium">
+                    <div>
+                        <th scope="col" className="px-3 py-5 font-medium">
                             Last 24h
+                        </th>
+                        <th scope='col' className='px-3 py-5'>
+
                         </th>
                     </div>
                 </tr>
             </thead>
             <tbody className='bg-white dark:bg-slate-800'>
-                {filteredCoins?.map((coin) => (
-                    <tr
-                        key={coin.id}
-                        className="border-b dark:border-slate-900 text-sm last-of-type:border-none rounded-lg"
-                    >
-                        <div className="w-full flex items-center justify-center gap-4">
+                    {filteredCoins?.map((coin) => (
+                        <tr
+                            key={coin.id}
+                            className="w-full border-b dark:border-slate-900 py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                        >
                             <td className="whitespace-nowrap px-3 py-3">
                                 {coin.market_cap_rank}
                             </td>
-                            <td className="whitespace-nowrap py-3">
+                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
                                 <div className="flex items-center gap-3">
                                     <Image
                                         src={coin.image}
@@ -204,14 +202,11 @@ function CoinsTableMobile({ filteredCoins }) {
                                     <p>{coin.name}</p>
                                 </div>
                             </td>
-                            <td className="whitespace-nowrap">
+                            <td className="whitespace-nowrap px-3 py-3">
                                 ${roundToDecimals(coin.current_price, 2)}
                             </td>
-                        </div>
-
-                        <div className="w-full flex items-center justify-center">
-                            <td className="whitespace-nowrap flex items-center">
-                                <span className='text-[0.8rem]'>
+                            <td className="whitespace-nowrap flex items-center px-3 py-3">
+                                <span className='text-2xl'>
                                     {coin.market_cap_change_percentage_24h > 0 ?
                                         <IoMdArrowDropup
                                             className='text-green-500' />
@@ -220,16 +215,16 @@ function CoinsTableMobile({ filteredCoins }) {
                                 </span>
                                 {roundToDecimals(coin.market_cap_change_percentage_24h, 2)}%
                             </td>
-                            <td className="whitespace-nowrap text-[0.8rem]">
+                            <td className="whitespace-nowrap px-3 py-3">
                                 ${coin.market_cap}
                             </td>
-                            <td className="whitespace-nowrap text-[0.8rem] p-1">
+                            <td className="whitespace-nowrap px-3 py-3">
                                 {Math.ceil(coin.circulating_supply)}
                                 <span className='dark:text-slate-300 text-slate-800 mx-1 uppercase'>{coin.symbol}</span>
                             </td>
-                        </div>
-
-                        <div className="w-full flex items-center justify-center p-2">
+                            <td className="whitespace-nowrap px-3 py-3">
+                                <SingleLineChart coin={coin} />
+                            </td>
 
                             <td className="whitespace-nowrap px-3 py-3">
                                 <Link
@@ -239,11 +234,10 @@ function CoinsTableMobile({ filteredCoins }) {
                                     See More
                                 </Link>
                             </td>
-                        </div>
 
-                    </tr>
-                ))}
-            </tbody>
+                        </tr>
+                    ))}
+                </tbody>
 
         </table>
 

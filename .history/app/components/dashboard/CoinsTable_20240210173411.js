@@ -149,8 +149,8 @@ function CoinsTableMobile({ filteredCoins }) {
     return (
 
         <table className="w-full flex flex-col items-center md:hidden dark:bg-slate-900">
-            <thead className="w-full my-4 rounded-lg text-left text-sm font-normal">
-                <tr className="flex flex-col items-start justify-between text-[0.8rem]">
+            <thead className="bg-red-500 rounded-lg text-left text-sm font-normal">
+                <tr className="flex flex-col">
                     <div className="flex items-center justify-btween gap-4">
                         <th scope="col" className="p-2 font-medium">
                             #
@@ -175,9 +175,12 @@ function CoinsTableMobile({ filteredCoins }) {
                         </th>
                     </div>
 
-                    <div className="flex items-center justify-center gap-4">
+                    <div className="flex items-center justify-btween gap-4">
                         <th scope="col" className="p-2 font-medium">
                             Last 24h
+                        </th>
+                        <th scope='col' className='p-2'>
+                            Actions
                         </th>
                     </div>
                 </tr>
@@ -186,7 +189,7 @@ function CoinsTableMobile({ filteredCoins }) {
                 {filteredCoins?.map((coin) => (
                     <tr
                         key={coin.id}
-                        className="border-b dark:border-slate-900 text-sm last-of-type:border-none rounded-lg"
+                        className="border-b dark:border-slate-900 text-sm last-of-type:border-none"
                     >
                         <div className="w-full flex items-center justify-center gap-4">
                             <td className="whitespace-nowrap px-3 py-3">
@@ -229,7 +232,7 @@ function CoinsTableMobile({ filteredCoins }) {
                             </td>
                         </div>
 
-                        <div className="w-full flex items-center justify-center p-2">
+                        <div className="w-full flex items-center justify-center p1">
 
                             <td className="whitespace-nowrap px-3 py-3">
                                 <Link

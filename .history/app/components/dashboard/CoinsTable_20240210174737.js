@@ -175,7 +175,7 @@ function CoinsTableMobile({ filteredCoins }) {
                         </th>
                     </div>
 
-                    <div className="flex items-center justify-center gap-4">
+                    <div className="flex items-center justify-center">
                         <th scope="col" className="p-2 font-medium">
                             Last 24h
                         </th>

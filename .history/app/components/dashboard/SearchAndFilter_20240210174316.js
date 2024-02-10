@@ -23,7 +23,7 @@ const filterOptions = [
 export default function SearchAndFilter({ handleSearch, handleFilter }) {
 
     return (
-        <div className="w-full p-1 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-12">
+        <div className="w-full p-1 flex flex-col md:flex-row items-center justify-between gap-12">
             <SearchBox handleSearch={handleSearch} />
             <FilterBox handleFilter={handleFilter} />
         </div>
