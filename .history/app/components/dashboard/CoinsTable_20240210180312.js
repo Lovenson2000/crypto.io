@@ -51,7 +51,7 @@ export default function CoinsTable({ coins }) {
         <>
             <SearchAndFilter handleSearch={handleSearch} handleFilter={handleFilter} />
             <CoinsTableMobile filteredCoins={filteredCoins} />
-            <table className='hidden md:table dark:bg-slate-900'>
+            <table className='hidden md:flex  flex-col w-full dark:bg-slate-900'>
                 <thead className="rounded-lg text-left text-sm font-normal">
                     <tr>
                         <th scope="col" className="px-3 py-5 font-medium">
