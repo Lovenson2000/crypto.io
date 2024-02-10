@@ -127,7 +127,7 @@ export default function CoinsTable({ coins }) {
 
                             <td className="whitespace-nowrap px-3 py-3">
                                 <Link
-                                    href={`/dashboard/${coin.id}`}
+                                    href={`dashboard/${coin.id}`}
                                     className="px-12 py-2.5 text-center bg-main text-white w-full rounded-full border-none outline-none"
                                 >
                                     See More

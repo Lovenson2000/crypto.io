@@ -1,6 +1,6 @@
 import ChartWrapper from "@/app/components/dashboard/BoxChart";
 import CoinsTable from "@/app/components/dashboard/CoinsTable";
-import { fetchCoins } from "../api/data";
+import { fetchCoins } from "../../api/data";
 
 export default async function Page() {
   const response = await fetchCoins();

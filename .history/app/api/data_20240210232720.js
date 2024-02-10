@@ -27,12 +27,13 @@ export async function fetchCoin(id) {
     try {
         const response = await fetch(API_URL, { next: { revalidate: 0 }});
         const coins = await response.json();
+        
 
-        const coin = coins.find((coin) => coin.id === id);
-        return coin;   
     } catch (error) {
         console.error("Error fetching data", error);   
     }
+
+
 }
 
 
