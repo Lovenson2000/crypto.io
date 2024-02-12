@@ -69,9 +69,11 @@ export default function AreaChartBox({ coin }) {
                     <stop offset="95%" stopColor="#124CF5" stopOpacity={0} />
                 </linearGradient>
             </defs>
-            {/* <XAxis />
-            <YAxis /> */}
-            <Tooltip />
+            <Tooltip
+                contentStyle={{ background: "transparent",}}
+                labelStyle={{ display: "none" }}
+                
+            />
             <Area type="monotone" dataKey="uv" stroke="#924CF5" fillOpacity={1} fill="url(#colorUv)" />
             <Area type="monotone" dataKey="pv" stroke="#124CF5" fillOpacity={1} fill="url(#colorPv)" />
         </AreaChart>
