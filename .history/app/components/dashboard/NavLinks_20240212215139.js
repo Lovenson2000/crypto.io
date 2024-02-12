@@ -53,7 +53,7 @@ export default function NavLinks() {
                                 "bg-indigo-700 text-white": pathname === link.href,
                             },
                             {
-                                "dark:bg-indigo-600 dark:text-white": pathname === link.href,
+                                "dark:bg-indigo-700 dark:text-white": pathname === link.href,
                             },
                         )}
                     >
