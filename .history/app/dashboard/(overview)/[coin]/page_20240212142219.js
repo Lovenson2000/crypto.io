@@ -1,5 +1,5 @@
 import { fetchCoin } from "@/app/api/data";
-import AreaChartBox from "@/app/components/AreaChartBox";
+import AreaChartBox from "@/app/components/BarChart";
 import BarChartBox from "@/app/components/dashboard/BarChart";
 import CoinBoxChart from "@/app/components/dashboard/CoinBoxChart";
 
