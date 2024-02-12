@@ -2,7 +2,7 @@ import { IoMdArrowDropup } from "react-icons/io";
 
 export default function CoinBoxChart({children, price, high}) {
     return (
-        <div className="dark:bg-slate-800 flex flex-col gap-1 text-[0.9rem] dark:text-slate-100 bg-white w-36 py-3 px-2 text-slate-700 relative shadow-lg rounded-md">
+        <div className="dark:bg-slate-800 flex flex-col gap-1 text-[0.9rem] dark:text-slate-100 bg-white w-36 py-3 px-4 text-slate-700 relative shadow-lg rounded-md">
             <h1>{children}</h1>
             <p className="flex items-center justify-center gap-2">
                 <span>${price}</span>

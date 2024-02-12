@@ -51,7 +51,7 @@ export default function BarChartBox() {
         }
     ]
     return (
-        <BarChart width={320} height={170} data={data}>
+        <BarChart width={330} height={110} data={data}>
             <Bar dataKey="uv" fill="#624CF5" />
         </BarChart>
     )

@@ -15,7 +15,7 @@ export default async function Page({ params }) {
           <AreaChartBox coin={coinData} />
         </div>
 
-        <div className="border p-3 w-full flex flex-col gap-4">
+        <div className="border p-3 w-full flex flex-col gap-6">
           <div className="flex items-center justify-between">
             <CoinBoxChart 
               price={coinData.high_24h}
