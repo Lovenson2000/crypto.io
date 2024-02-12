@@ -3,8 +3,7 @@
 import React from 'react'
 import { Bar, BarChart, Tooltip } from 'recharts';
 
-export default function BarChartBox() {
-
+export default function DesktopBarChart() {
 
     const data = [
         {
@@ -53,8 +52,8 @@ export default function BarChartBox() {
     ]
     return (
         <BarChart
-            width={330}
-            height={170}
+            width={370}
+            height={200}
             data={data}
             margin={{ top: 10, right: 0, left: 0, bottom: 0 }}
         >
