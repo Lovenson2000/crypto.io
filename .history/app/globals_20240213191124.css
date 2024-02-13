@@ -50,7 +50,6 @@
     --ring: 263.4 70% 50.4%;
     --text-color: white;
     --clerk-background: rgb(31, 41, 59);
-    --clerk-icon-background: rgb(14, 25, 44);
   }
 }
 
@@ -132,15 +131,11 @@ body {
 .cl-internal-of57g, 
 .cl-internal-fqx4fd,
 .cl-internal-3vf5mz,
-.cl-dividerText,
-.cl-formFieldLabel,
-.cl-footerActionText,
 .cl-navbarButton {
   color: var(--text-color);
 }
 
-.cl-formFieldInput,
-.cl-socialButtons button {
-  background-color: var(--clerk-icon-background);
-  color: var(--text-color);
+.cl-socialButtons {
+  background-color: red;
 }
+

@@ -139,8 +139,6 @@ body {
   color: var(--text-color);
 }
 
-.cl-formFieldInput,
 .cl-socialButtons button {
   background-color: var(--clerk-icon-background);
-  color: var(--text-color);
 }
