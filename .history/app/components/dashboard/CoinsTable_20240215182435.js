@@ -142,6 +142,7 @@ export default function CoinsTable({ coins }) {
 }
 
 
+
 function CoinsTableMobile({ filteredCoins }) {
 
     return (
@@ -232,7 +233,7 @@ function CoinsTableMobile({ filteredCoins }) {
                             <td className="whitespace-nowrap px-3 py-3">
                                 <Link
                                     href={`dashboard/${coin.id}`}
-                                    className="px-12 py-2.5 text-center bg-main hover:via-violet-700 text-white w-full rounded-full border-none outline-none"
+                                    className="px-12 py-2.5 text-center bg-main text-white w-full rounded-full border-none outline-none"
                                 >
                                     See More
                                 </Link>
