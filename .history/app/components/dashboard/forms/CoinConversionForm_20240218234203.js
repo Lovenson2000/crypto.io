@@ -25,7 +25,7 @@ export default function CoinConversionForm({ coins }) {
 
             if (baseCoinPrice !== undefined && toCoinPrice !== undefined) {
 
-                const result = roundToDecimals((baseCoinPrice * amount) / toCoinPrice, 3);
+                let result = roundToDecimals((baseCoinPrice * amount) / toCoinPrice, 3);
                 setConversionResult(result);
                 setShowConversionResult(true);
                 setBaseCoinImage(selectedBaseCoin?.image);

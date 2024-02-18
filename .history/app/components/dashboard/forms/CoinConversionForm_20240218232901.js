@@ -16,25 +16,17 @@ export default function CoinConversionForm({ coins }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (baseCoin && toCoin && amount) {
-            const selectedBaseCoin = coins.find((coin) => coin.name === baseCoin);
-            const selectedToCoin = coins.find((coin) => coin.name === toCoin);
+        if (baseCoin || toCoin || amount) {
+            const selectedBaseCoin = coins.filter((coin) => coin.name === baseCoin);
+            const selectedToCoin = coins.filter((coin) => coin.name === toCoin);
 
-            const baseCoinPrice = selectedBaseCoin?.current_price;
-            const toCoinPrice = selectedToCoin?.current_price;
+            const baseCoinPrice = selectedBaseCoin[0].current_price;
+            const toCoinPrice = selectedToCoin[0].current_price;
 
-            if (baseCoinPrice !== undefined && toCoinPrice !== undefined) {
-
-                const result = roundToDecimals((baseCoinPrice * amount) / toCoinPrice, 3);
-                setConversionResult(result);
-                setShowConversionResult(true);
-                setBaseCoinImage(selectedBaseCoin?.image);
-                setToCoinImage(selectedToCoin?.image);
-            } else {
-                alert("Invalid coins or prices.");
-            }
-        } else {
-            alert("Please select 'From' and 'To' coins, and enter an amount.");
+            setConversionResult(roundToDecimals((baseCoinPrice * amount) / toCoinPrice, 3));
+            setShowConversionResult(true);
+            setBaseCoinImage(selectedBaseCoin[0].image);
+            setToCoinImage(selectedToCoin[0].image);
         }
     };
 
@@ -114,7 +106,7 @@ export default function CoinConversionForm({ coins }) {
                 </button>
             </form>
 
-            {showConversionResult && (
+            {showConversionResult &&
                 <div className="p-4 md:w-1/2 rounded-sm flex gap-2 bg-white dark:bg-slate-800">
                     <p className="flex items-center gap-2">
                         <span>{amount}</span>
@@ -138,7 +130,7 @@ export default function CoinConversionForm({ coins }) {
                         <span>{toCoin}</span>
                     </p>
                 </div>
-            )}
+            }
         </div>
     );
 };

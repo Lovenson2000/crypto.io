@@ -22,7 +22,7 @@ export default function FormContainer({ coins }) {
     return (
         <div>
             <h1 className="text-slate-800 p-2 dark:text-slate-100">{isLoaded && `Hello, ${user.firstName}`}</h1>
-            <form className='flex items-center justify-center'>
+            <form>
                 <select
                     name="action"
                     value={selectedAction}

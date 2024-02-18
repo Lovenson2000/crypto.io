@@ -22,12 +22,12 @@ export default function FormContainer({ coins }) {
     return (
         <div>
             <h1 className="text-slate-800 p-2 dark:text-slate-100">{isLoaded && `Hello, ${user.firstName}`}</h1>
-            <form className='flex items-center justify-center'>
+            <form>
                 <select
                     name="action"
                     value={selectedAction}
                     onChange={(e) => setSelectedAction(e.target.value)}
-                    className="dark:bg-slate-800 mt-1 p-3 rounded-md w-full md:w-1/2 border-none outline-none shadow-md border-1"
+                    className="dark:bg-slate-800 mt-1 p-3 rounded-md w-full border-none outline-none shadow-md border-1"
                 >
                     <option value="" disabled>
                         Select an action

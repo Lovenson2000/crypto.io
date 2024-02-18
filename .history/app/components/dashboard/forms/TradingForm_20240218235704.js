@@ -82,7 +82,7 @@ export default function TradingForm({ coins }) {
 
                 <button
                     type="submit"
-                    className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700"
+                    className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700"
                 >
                     {action === "buy" ? "Buy" : action === "sell" ? "Sell" : "Submit"}
                 </button>

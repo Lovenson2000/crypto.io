@@ -25,7 +25,7 @@ export default function CoinConversionForm({ coins }) {
 
             if (baseCoinPrice !== undefined && toCoinPrice !== undefined) {
 
-                const result = roundToDecimals((baseCoinPrice * amount) / toCoinPrice, 3);
+                let result = roundToDecimals((baseCoinPrice * amount) / toCoinPrice, 3);
                 setConversionResult(result);
                 setShowConversionResult(true);
                 setBaseCoinImage(selectedBaseCoin?.image);
@@ -114,7 +114,7 @@ export default function CoinConversionForm({ coins }) {
                 </button>
             </form>
 
-            {showConversionResult && (
+            {showConversionResult &&
                 <div className="p-4 md:w-1/2 rounded-sm flex gap-2 bg-white dark:bg-slate-800">
                     <p className="flex items-center gap-2">
                         <span>{amount}</span>
@@ -138,7 +138,7 @@ export default function CoinConversionForm({ coins }) {
                         <span>{toCoin}</span>
                     </p>
                 </div>
-            )}
+            }
         </div>
     );
 };
