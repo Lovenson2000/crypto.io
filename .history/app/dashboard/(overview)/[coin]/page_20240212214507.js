@@ -4,10 +4,10 @@ import DesktopBarChart from "@/app/components/dashboard/charts/DesktopBarChart";
 import MobileAreaChart from "@/app/components/dashboard/charts/MobileAreaChart";
 import MobileBarChart from "@/app/components/dashboard/charts/MobileBarChart";
 import CoinBoxWrapper from "@/app/components/dashboard/CoinBoxWrapper";
-import Link from "next/link";
 
 
 export default async function Page({ params }) {
+
   const { coin } = params;
   const coinData = await fetchCoin(coin);
 
@@ -18,11 +18,7 @@ export default async function Page({ params }) {
         <CoinBoxWrapper coinData={coinData} />
 
         <div className="flex flex-col md:items-center gap-4">
-          <Link
-            href="/dashboard/coins"
-            className="p-2 w-full md:w-60 font-normal text-lg bg-blue-600 hover:bg-blue-700 rounded-md text-white outline-none border-none">
-            Add to favorites
-          </Link>
+          <button className="p-2 w-full md:w-60 font-normal text-lg bg-blue-600 hover:bg-blue-700 rounded-md text-white outline-none border-none"> Add to favorites</button>
         </div>
 
         <div className="flex flex-col gap-8 md:flex-row items-center justify-center">
@@ -53,11 +49,9 @@ export default async function Page({ params }) {
       </div>
 
       <div className="flex flex-col md:items-center gap-4">
-        <Link
-          href="/dashboard/simulator"
-          className="p-2 w-full md:w-60 text-center font-normal text-lg bg-blue-600 hover:bg-blue-700 rounded-md text-white outline-none border-none">
+        <button className="p-2 w-full md:w-60  font-normal text-lg bg-blue-600 hover:bg-blue-700 rounded-md text-white outline-none border-none">
           Simulate trade
-        </Link>
+        </button>
       </div>
 
     </main>
