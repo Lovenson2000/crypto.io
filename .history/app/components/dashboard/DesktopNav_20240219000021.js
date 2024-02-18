@@ -15,6 +15,7 @@ export default function DesktopNav() {
                 <RiShutDownLine className="w-6 text-lg text-indigo-800" />
                 <SignOutButton className="text-[1rem]" />
             </div>
+            
         </div>
     );
 }

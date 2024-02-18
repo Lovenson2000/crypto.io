@@ -7,7 +7,7 @@ export default function SideNav() {
       <div className="md:hidden dark:bg-slate-800">
         <MobileNav />
       </div>
-      <div className="hidden rounded-md h-full md:w-60 md:flex fixed">
+      <div className="hidden rounded-md h-full md:flex md:w-full fixed">
         <DesktopNav />
       </div>
     </div>
