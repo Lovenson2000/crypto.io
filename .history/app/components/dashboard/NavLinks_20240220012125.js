@@ -44,18 +44,19 @@ export default function NavLinks() {
             {links.map((link) => {
                 const LinkIcon = link.icon;
                 return (
-                    <Link
-                        key={link.name}
-                        href={link.href}
-                        className={clsx(
-                            "dark:bg-slate-800 flex h-[48px] items-center justify-start gap-4 rounded-md p-3 text-sm font-medium bg-white dark:hover:bg-slate-700 hover:bg-indigo-100 hover:text-main dark:hover:text-slate-100 hover:translate-y-[-2px] focus:ring md:flex-none shadow-sm",
-                            {
-                                "bg-indigo-500 dark:bg-indigo-500 text-white !important": pathname === link.href,
-                            },   
-                        )}
-                    >
-                        <LinkIcon className={`${pathname === link.href ? "text-white" : "text-main"} w-6 text-lg`} />
-                        <p className="text-[1rem]">{link.name}</p>
+                    <Link key={link.name} href={link.href}>
+                        <a
+                            className={clsx(
+                                "flex items-center gap-4 rounded-md p-3 text-sm font-medium hover:bg-indigo-100 hover:text-main dark:hover:bg-slate-700 dark:hover:text-slate-100 focus:ring md:flex-none shadow-sm",
+                                {
+                                    "bg-indigo-500 text-white": pathname === link.href,
+                                    "dark:bg-indigo-600 dark:text-white": pathname === link.href,
+                                }
+                            )}
+                        >
+                            <LinkIcon className={`${pathname === link.href ? "text-white" : "text-main"} w-6 text-lg`} />
+                            <p className="text-[1rem]">{link.name}</p>
+                        </a>
                     </Link>
                 );
             })}
