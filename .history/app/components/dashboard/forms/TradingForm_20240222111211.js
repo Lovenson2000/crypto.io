@@ -10,6 +10,7 @@ export default function TradingForm({ coins }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+
         if (action && selectedCoin && amount) {
             console.log(`Performing ${action} for ${amount} of ${selectedCoin}`);
         } else {
