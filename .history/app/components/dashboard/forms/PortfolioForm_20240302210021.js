@@ -1,11 +1,28 @@
 "use client";
 
-import { useState } from "react";                             
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+const wallet = [
+    {
+        coinName: "Bitcoin",
+        amount: 0.24,
+    },
+    {
+        coinName: "Ethereum",
+        amount: 3
+    },
+    {
+        coinName: "Solana",
+        amount: 8
+    },
+];
 
 export default function ({ coins }) {
     const [selectedCoin, setSelectedCoin] = useState();
     const [amount, setAmount] = useState();
+    const balance = useSelector((state) => state.balance);
+    const dispatch = useDispatch();
 
     return (
         <form
@@ -37,7 +54,7 @@ export default function ({ coins }) {
 
             <div className="mb-4">
                 <label htmlFor="amount" className="block text-sm font-medium">
-                    Amount to Convert
+                    Actual balance
                 </label>
                 <input
                     type="number"

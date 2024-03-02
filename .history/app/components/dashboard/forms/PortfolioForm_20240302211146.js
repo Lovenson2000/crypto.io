@@ -1,11 +1,44 @@
 "use client";
 
-import { useState } from "react";                             
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+const wallet = [
+    {
+        coinName: "Bitcoin",
+        amount: 0.24,
+    },
+    {
+        coinName: "Ethereum",
+        amount: 3
+    },
+    {
+        coinName: "Solana",
+        amount: 8
+    },
+];
 
 export default function ({ coins }) {
     const [selectedCoin, setSelectedCoin] = useState();
     const [amount, setAmount] = useState();
+
+
+    const addCoinToPortfolio = (e) => {
+        e.preventDefault();
+
+        if (baseCoin && amount) {
+            const selectedBaseCoin = coins.find((coin) => coin.name === baseCoin);
+            const baseCoinPrice = selectedBaseCoin?.current_price;
+
+            if (baseCoinPrice !== undefined) {
+                const value = roundToDecimals((baseCoinPrice * amount), 3);
+            } else {
+                alert("Invalid coins or prices.");
+            }
+        } else {
+            alert("Please select 'From' and 'To' coins, and enter an amount.");
+        }
+    };
 
     return (
         <form
@@ -37,7 +70,7 @@ export default function ({ coins }) {
 
             <div className="mb-4">
                 <label htmlFor="amount" className="block text-sm font-medium">
-                    Amount to Convert
+                    Actual balance
                 </label>
                 <input
                     type="number"

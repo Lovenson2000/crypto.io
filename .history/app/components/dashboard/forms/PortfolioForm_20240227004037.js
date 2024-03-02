@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 export default function ({ coins }) {
     const [selectedCoin, setSelectedCoin] = useState();
     const [amount, setAmount] = useState();
+    const balance = useSelector((state) => state.balance);
+    const dispatch = useDispatch();
 
     return (
         <form
