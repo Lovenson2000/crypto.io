@@ -5,7 +5,7 @@ import NavLinks from './NavLinks';
 
 export default function DesktopNav() {
     return (
-        <div className="flex justify-center w-full rounded-md flex-col gap-4">
+        <div className="flex justify-center w-full rounded-md flex-col gap-4 z-30">
             <div className='dark:bg-slate-800 h-32 pl-5 py-4 w-full flex items-end rounded-md shadow-md'>
                 <Logo />
             </div>

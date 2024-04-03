@@ -5,9 +5,6 @@ import Logo from '../Logo';
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
 import NavLinks from './NavLinks';
